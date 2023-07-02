@@ -24,7 +24,7 @@ gr<span style="color: #5370fd;">E</span><span style="color: #f40600;">E</span><s
 
 <p style="font-family: arial; font-size: 120%; text-align: center;">
 <strong><i>Epipremnum aureum</i> (Golden Pothos) Requirements: </strong><br>
-1. Light: >200ft-c (high-light areas), 75-200ft-c (med.-light), 25-75ft-c (low-light) <br>
+1. Light: >200ft-c (high-light areas), 75-200ft-c (med.-light), 25-75ft-c (low-light), minimize exposure to direct sunlight<br>
 2. Temperature: 65degF (night), 75degF (day) <br>
 3. Relative Humidity: 25-49% <br>
 4. Water: when surface is dry (every 1-2 weeks) <br>
@@ -67,7 +67,10 @@ fetch('https://api.thingspeak.com/channels/2149974/feeds.json?results=1')
     const currentHour = currentTime.getHours();
 
     <!-- Conditions2 -->
-    if (parseFloat(latestReadingField2) < 1) {
+    if (parseFloat(latestReadingField1) > 32000) {
+      lightimply.innerHTML = '<span style="color: #fdec53;"><strong>THE PLANT IS IN DIRECT SUNLIGHT!.</strong></span>' 
+    }
+    else if (parseFloat(latestReadingField2) < 1) {
       lightimply.innerHTML = '<span style="color: #5370fd;"><strong>The plant is in low light.</strong></span>' }
     else if (parseFloat(latestReadingField2) > 1) {
       lightimply.innerHTML = '<span style="color: #fdec53;"><strong>The plant is in high light.</strong></span>' }
