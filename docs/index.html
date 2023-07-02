@@ -116,8 +116,9 @@ hr {color: white; border-style: solid;}
 <br><br><br>
 <strong>Implications: </strong> <br>
 Current Temperature: <span id="field1"></span> degree Celcius <br>
+ <span id="tempimply"></span> <br>
 Current Humidity: <span id="field2"></span> % Relative Humidity <br>
-<span id="tempimply"></span> <br>
+
 <span id="humidimply"></span> <br>
 
 
@@ -185,10 +186,10 @@ hr {color: white; border-style: solid;}
 
 <p style="font-family: arial; font-size:150%; text-align: center;">
 <b>Air Quality Sensor (SGP30) Indicators</b> <br>
-<br>
 
-Current CO2 Levels: <span id="field3"></span> ppm | <span id="co2imply"></span><br>
-Current TVOC Levels: <span id="field4"></span> ppb <br> 
+
+Current CO2 Level: <span id="field3"></span> ppm <br> <span id="co2imply"></span><br>
+Current TVOC Level: <span id="field4"></span> ppb <br> 
 </p>
   
 <script>
@@ -215,11 +216,11 @@ fetch('https://api.thingspeak.com/channels/2203260/feeds.json?results=1')
     else if (parseFloat(latestReadingField1) < 2000) {
       co2imply.innerHTML = '<span style="color: #ffffff;"><strong>Drowsiness might be experienced.</strong></span>' }
     else if (parseFloat(latestReadingField1) < 5000) {
-      co2imply.innerHTML = '<span style="color: #fdd553;"><strong>CO2 levels are too high.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #fdd553;"><strong>CO2 LEVELS ARE TOO HIGH!.</strong></span>' }
     else if (parseFloat(latestReadingField1) < 40000) {
-      co2imply.innerHTML = '<span style="color: #fd5353;"><strong>CO2 levels are toxic.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #fd5353;"><strong>CO2 LEVELS ARE TOXIC!.</strong></span>' }
     else {
-      co2imply.innerHTML = '<span style="color: #d353fd;"><strong>Oxygen deprivation may occur.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #d353fd;"><strong>OXYGEN DEPRIVATION MAY OCCUR!.</strong></span>' }
 
   })
   .catch(error => console.error(error));
