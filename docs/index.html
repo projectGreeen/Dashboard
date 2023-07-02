@@ -204,7 +204,7 @@ fetch('https://api.thingspeak.com/channels/2203260/feeds.json?results=1')
     document.getElementById('field4').textContent = latestReadingField2;
 
     <!-- Check Time -->
-    const lightimply = document.getElementById('lightimply');
+    const co2imply = document.getElementById('co2imply');
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
@@ -212,13 +212,13 @@ fetch('https://api.thingspeak.com/channels/2203260/feeds.json?results=1')
     if (parseFloat(latestReadingField1) < 1000) {
       co2imply.innerHTML = '<span style="color: #7dfc72;"><strong>Normal CO2 levels.</strong></span>' }
     else if (parseFloat(latestReadingField1) < 2000) {
-      lightimply.innerHTML = '<span style="color: #ffffff;"><strong>Drowsiness might be experienced.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #ffffff;"><strong>Drowsiness might be experienced.</strong></span>' }
     else if (parseFloat(latestReadingField1) < 5000) {
-      lightimply.innerHTML = '<span style="color: #fdd553;"><strong>CO2 levels are too high.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #fdd553;"><strong>CO2 levels are too high.</strong></span>' }
     else if (parseFloat(latestReadingField1) < 40000) {
-      lightimply.innerHTML = '<span style="color: #fd5353;"><strong>CO2 levels are toxic.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #fd5353;"><strong>CO2 levels are toxic.</strong></span>' }
     else {
-      lightimply.innerHTML = '<span style="color: #d353fd;"><strong>Oxygen deprivation may occur.</strong></span>' }
+      co2imply.innerHTML = '<span style="color: #d353fd;"><strong>Oxygen deprivation may occur.</strong></span>' }
 
   )
   .catch(error => console.error(error));
