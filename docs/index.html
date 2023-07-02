@@ -198,6 +198,46 @@ hr {color: white; border-style: solid;}
 <iframe width="260" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2166518/widgets/676180"></iframe>
 <iframe width="260" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2166518/widgets/676181"></iframe>
 <iframe width="260" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2166518/widgets/676182"></iframe>
+Current CO2 Levels: <span id="field1"></span> ppm <br>
+Current TVOC Levels: <span id="field2"></span> ppb <br> 
+<span id="co2imply"></span> <br>
+  
+
+
+
+<script>
+<!-- Make an HTTP GET request to ThingSpeak API -->
+fetch('https://api.thingspeak.com/channels/2203260/feeds.json?results=1')
+  .then(response => response.json())
+  .then(data => {
+    <!-- Extract the latest readings from the response -->
+    const latestReadingField1 = data.feeds[0].field1;
+    const latestReadingField2 = data.feeds[0].field2;
+        
+    <!-- Display the latest readings on the HTML page -->
+    document.getElementById('field1').textContent = latestReadingField1;
+    document.getElementById('field2').textContent = latestReadingField2;
+
+    <!-- Check Time -->
+    const lightimply = document.getElementById('lightimply');
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+
+    <!-- Conditions2 -->
+    if (parseFloat(latestReadingField1) < 1000) {
+      co2imply.innerHTML = '<span style="color: #7dfc72;"><strong>Normal CO2 levels.</strong></span>' }
+    else if (parseFloat(latestReadingField1) < 2000) {
+      lightimply.innerHTML = '<span style="color: #ffffff;"><strong>Drowsiness might be experienced.</strong></span>' }
+    else if (parseFloat(latestReadingField1) < 5000) {
+      lightimply.innerHTML = '<span style="color: #fdd553;"><strong>CO2 levels are too high.</strong></span>' }
+    else if (parseFloat(latestReadingField1) < 40000) {
+      lightimply.innerHTML = '<span style="color: #fd5353;"><strong>CO2 levels are toxic.</strong></span>' }
+    else {
+      lightimply.innerHTML = '<span style="color: #d353fd;"><strong>Oxygen deprivation may occur.</strong></span>' }
+
+  )
+  .catch(error => console.error(error));
+</script>
 <br>
 
 <br><br>
