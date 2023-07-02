@@ -61,10 +61,6 @@ fetch('https://api.thingspeak.com/channels/2149974/feeds.json?results=1')
     const latestReadingField1 = data.feeds[0].field1;
     const latestReadingField2 = data.feeds[0].field2;
         
-    <!-- Display the latest readings on the HTML page -->
-    document.getElementById('field1').textContent = latestReadingField1;
-    document.getElementById('field2').textContent = latestReadingField2;
-
     <!-- Check Time -->
     const lightimply = document.getElementById('lightimply');
     const currentTime = new Date();
