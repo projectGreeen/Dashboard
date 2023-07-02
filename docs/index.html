@@ -191,8 +191,8 @@ hr {color: white; border-style: solid;}
 <b>Air Quality Sensor (SGP30) Indicators</b> <br>
 <br>
 
-Current CO2 Levels: <span id="field1"></span> ppm | <span id="co2imply"></span><br>
-Current TVOC Levels: <span id="field2"></span> ppb <br> 
+Current CO2 Levels: <span id="field3"></span> ppm | <span id="co2imply"></span><br>
+Current TVOC Levels: <span id="field4"></span> ppb <br> 
 
 <script>
 <!-- Make an HTTP GET request to ThingSpeak API -->
@@ -204,8 +204,8 @@ fetch('https://api.thingspeak.com/channels/2203260/feeds.json?results=1')
     const latestReadingField2 = data.feeds[0].field2;
         
     <!-- Display the latest readings on the HTML page -->
-    document.getElementById('field1').textContent = latestReadingField1;
-    document.getElementById('field2').textContent = latestReadingField2;
+    document.getElementById('field3').textContent = latestReadingField1;
+    document.getElementById('field4').textContent = latestReadingField2;
 
     <!-- Check Time -->
     const lightimply = document.getElementById('lightimply');
